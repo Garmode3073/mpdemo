@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mpdemo/background.dart';
+import 'package:mpdemo/widgets/background.dart';
 import 'package:mpdemo/global.dart' as g;
 
 class RegisterPage extends StatefulWidget {

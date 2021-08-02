@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mpdemo/background.dart';
+import 'package:mpdemo/widgets/background.dart';
 import 'package:mpdemo/global.dart' as g;
-import 'package:mpdemo/register.dart';
+import 'package:mpdemo/screens/register.dart';
 import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
