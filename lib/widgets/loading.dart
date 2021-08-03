@@ -12,6 +12,8 @@ class LoadingPage extends StatefulWidget {
 class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
+    g.height = MediaQuery.of(context).size.height;
+    g.width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: g.primary,
       body: Center(
