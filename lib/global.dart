@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mpdemo/models/user.dart';
 
 //measurements
 double width, height;
@@ -20,3 +21,6 @@ Map<int, Color> color = {
 //colors
 
 Color primary = MaterialColor(0xff2f3192, color);
+
+//global user
+UserInApp userglob;

@@ -1,10 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mpdemo/models/user.dart';
+import 'package:mpdemo/services/auth.dart';
+import 'package:mpdemo/services/wrapper.dart';
 import 'package:mpdemo/widgets/loading.dart';
-import 'package:mpdemo/screens/login.dart';
 import 'package:mpdemo/global.dart' as g;
+import 'package:provider/provider.dart';
 
 void main() {
+  ErrorWidget.builder = (FlutterErrorDetails details) => MaterialApp(
+        title: 'Important Modules',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: g.primary,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: LoadingPage(),
+      );
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
@@ -26,6 +38,7 @@ class MyApp extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: g.primary,
               visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -34,7 +47,15 @@ class MyApp extends StatelessWidget {
           );
         }
         // Otherwise, show something whilst waiting for initialization to complete
-        return LoadingPage();
+        return MaterialApp(
+          title: 'Important Modules',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: g.primary,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: LoadingPage(),
+        );
       },
     );
   }
@@ -49,8 +70,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  AuthServices auth = AuthServices();
   @override
   Widget build(BuildContext context) {
-    return LoadingPage();
+    return StreamProvider<UserInApp>.value(
+        value: auth.userIsIn, child: Wrapper());
   }
 }
